@@ -12,30 +12,38 @@ app.geometry("1000x700")
 app.state('normal')
 
 
-def menu():
-    app.loop()
+def exit():
+    quit("Quit") 
 
-def button_function():
-    page1 = ctk.CTkFrame(app)
-    page1.pack(fill="both", expand=1)
-    
-    button = ctk.CTkButton(master=app, text="Menu", command=menu)
-    button.place(relx=0.1, rely=0.9, anchor=ctk.E)
-
-def button_function2():
+def nextpage():
+    new_window = ctk.CTkToplevel(app)
     page2 = ctk.CTkFrame(app)
     page2.pack(fill="both", expand=1)
-    
-    button = ctk.CTkButton(master=app, text="Menu", command=menu)
-    button.place(relx=0.1, rely=0.9, anchor=ctk.E)
+
+    button = ctk.CTkButton(master=app, text="Volcanoes", command=history)
+    button.place(relx=0.2, rely=0.5, anchor=ctk.W)
+
+    button = ctk.CTkButton(master=app, text="Space", command=history)
+    button.place(relx=0.45, rely=0.5, anchor=ctk.W)
+
+    button = ctk.CTkButton(master=app, text="History", command=history)
+    button.place(relx=0.7, rely=0.5, anchor=ctk.W)
+
+def history():
+    new_window = ctk.CTkToplevel(app)
+    page2 = ctk.CTkFrame(app)
+    page2.pack(fill="both", expand=10)
+
+    button = ctk.CTkButton(master=app, text="button")
+    button.place(relx=0.5, rely=0.5, anchor=ctk.W)
 
 
 # Use CTkButton instead of tkinter Button
-button = ctk.CTkButton(master=app, text="Page 1", command=button_function)
-button.place(relx=0.3, rely=0.5, anchor=ctk.E)
+button = ctk.CTkButton(master=app, text="Exit", command=exit)
+button.place(relx=0.3, rely=0.7, anchor=ctk.E)
 
-button = ctk.CTkButton(master=app, text="Page 2", command=button_function2)
-button.place(relx=0.6, rely=0.5, anchor=ctk.W)
+button = ctk.CTkButton(master=app, text="Next", command=nextpage)
+button.place(relx=0.6, rely=0.7, anchor=ctk.W)
 
 
 
