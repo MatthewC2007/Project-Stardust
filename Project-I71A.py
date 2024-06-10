@@ -25,12 +25,20 @@ class App(ctk.CTk):
 
         # Button on the menu page for the navigation page
         label = ctk.CTkLabel(self.welcome, text="Welcome",
-            font=("Helvetica",100))
-        label.pack(pady=200,padx=300)
+            font=("Helvetica",150))
+        label.pack(pady=300,padx=500)
+        
+        label = ctk.CTkLabel(self.welcome, text="“Empowering kids through knowledge.”",
+            font=("Helvetica",50))
+        label.place(relx=0.5,rely=0.7, anchor=tk.CENTER)
         
         self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Next",
-                                                  command=self.menu)
-        self.to_menu_page_button.pack(padx=200,pady=100)
+            command=self.menu,height=60, width=120,font=("Helvetica",25))
+        self.to_menu_page_button.place(relx=0.9, rely=0.9, anchor=tk.CENTER)
+        
+        self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Exit",
+            command=quit,height=60, width=120,font=("Helvetica",25))
+        self.to_menu_page_button.place(relx=0.1, rely=0.9, anchor=tk.CENTER)
         
 
         # Buttons on the navigation page to navigate to other pages
