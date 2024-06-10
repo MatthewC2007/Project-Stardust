@@ -15,6 +15,7 @@ class App(ctk.CTk):
         
         self.welcome = ctk.CTkFrame(self)
         self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        
 
         # Initialize frames for the other pages but do not place them yet
         self.page_one = ctk.CTkFrame(self)
@@ -23,13 +24,23 @@ class App(ctk.CTk):
         self.menu_page = ctk.CTkFrame(self)
 
         # Button on the menu page for the navigation page
-        self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Next", command=self.menu)
+        label = ctk.CTkLabel(self.welcome, text="Welcome",
+            font=("Helvetica",100))
+        label.pack(pady=200,padx=300)
+        
+        self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Next",
+                                                  command=self.menu)
         self.to_menu_page_button.pack(padx=200,pady=100)
+        
 
         # Buttons on the navigation page to navigate to other pages
-        ctk.CTkButton(self.menu_page, text="P1", command=self.p1).pack(padx=200, pady=50)
-        ctk.CTkButton(self.menu_page, text="P2", command=self.p2).pack(padx=200, pady=50)
-        ctk.CTkButton(self.menu_page, text="P3", command=self.p3).pack(padx=200, pady=50)
+        ctk.CTkButton(self.menu_page, text="P1",
+                       command=self.p1).pack(padx=200, pady=50)
+        ctk.CTkButton(self.menu_page, text="P2",
+                       command=self.p2).pack(padx=200, pady=50)
+        ctk.CTkButton(self.menu_page, text="P3",
+                       command=self.p3).pack(padx=200, pady=50)
+        
 
         # Show the menu page by default
         self.show_welcome()

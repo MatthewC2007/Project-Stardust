@@ -82,7 +82,7 @@ def nextpage():
     page2.pack(fill="both", expand=1)
 
     button = ctk.CTkButton(master=app, text="Volcanoes", command=history)
-    button.place(relx=0.2, rely=0.5, anchor=ctk.W)
+    
 
     button = ctk.CTkButton(master=app, text="Space", command=history)
     button.place(relx=0.45, rely=0.5, anchor=ctk.W)
