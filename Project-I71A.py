@@ -23,20 +23,25 @@ class App(ctk.CTk):
         self.page_three = ctk.CTkFrame(self)
         self.menu_page = ctk.CTkFrame(self)
 
-        # Button on the menu page for the navigation page
+        #Welcome page
+
+        #Welcome text
         label = ctk.CTkLabel(self.welcome, text="Welcome",
-            font=("Helvetica",150))
+            font=("Harlow Solid Italic",150))
         label.pack(pady=300,padx=500)
         
-        label = ctk.CTkLabel(self.welcome, text="“Empowering kids through knowledge.”",
-            font=("Helvetica",50))
+        #Slogan
+        label = ctk.CTkLabel(self.welcome,
+            text="Empowering kids through knowledge", font=("Harlow Solid Italic",50))
         label.place(relx=0.5,rely=0.7, anchor=tk.CENTER)
         
+        #Next button on Welcome page
         self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Next",
             command=self.menu,height=60, width=120,font=("Helvetica",25))
         self.to_menu_page_button.place(relx=0.9, rely=0.9, anchor=tk.CENTER)
         
-        self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Exit",
+        #Exit button on Welcome page
+        self.to_menu_page_button = ctk.CTkButton(self.welcome, text="Exit",    
             command=quit,height=60, width=120,font=("Helvetica",25))
         self.to_menu_page_button.place(relx=0.1, rely=0.9, anchor=tk.CENTER)
         
@@ -49,6 +54,12 @@ class App(ctk.CTk):
         ctk.CTkButton(self.menu_page, text="P3",
                        command=self.p3).pack(padx=200, pady=50)
         
+        #Page 1
+        label = ctk.CTkLabel(self.page_one,
+            text="Empowering kids through knowledge", font=("Helvetica",50))
+        label.pack(pady=400,padx = 500)
+        button = ctk.CTkButton(master=self.page_one, text="button")
+        button.place(relx=0.9, rely=0.9, anchor=ctk.CENTER)
 
         # Show the menu page by default
         self.show_welcome()
@@ -71,9 +82,8 @@ class App(ctk.CTk):
 
     def p1(self):
         self.hide_all_pages()
-        self.page_one.place(relx=0.1, rely=0.2, anchor=tk.CENTER)
-        button = ctk.CTkButton(master=app, text="button")
-        button.place(relx=0.5, rely=0.5, anchor=ctk.W)
+        self.page_one.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        
 
     def p2(self):
         self.hide_all_pages()
