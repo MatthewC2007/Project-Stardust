@@ -1,5 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
+import wikipedia
+  
 
 class App(ctk.CTk):
     def __init__(self):
@@ -56,8 +58,9 @@ class App(ctk.CTk):
         
         #Page 1
         label = ctk.CTkLabel(self.page_one,
-            text="Empowering kids through knowledge", font=("Helvetica",50))
-        label.pack(pady=400,padx = 500)
+            text=wikipedia.summary("steroids", sentences = 3), font=("Helvetica",20),
+              height=500, width= 10)
+        label.pack(pady=100,padx = 500)
         button = ctk.CTkButton(master=self.page_one, text="button")
         button.place(relx=0.9, rely=0.9, anchor=ctk.CENTER)
 
