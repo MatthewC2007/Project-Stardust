@@ -15,7 +15,7 @@ class App(ctk.CTk):
         self.geometry("1920x1080")
         self.state('normal')
         
-        self.welcome = ctk.CTkFrame(self)
+        self.welcome = ctk.CTkFrame(self,width=500, height=500)
         self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         
 
@@ -62,7 +62,7 @@ class App(ctk.CTk):
               height=500, width= 10)
         label.pack(pady=100,padx = 500)
         button = ctk.CTkButton(master=self.page_one, text="button")
-        button.place(relx=0.9, rely=0.9, anchor=ctk.CENTER)
+        button.place(relx=0.5, rely=0.9, anchor=ctk.S)
 
         # Show the menu page by default
         self.show_welcome()
