@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 import wikipedia
+from Text import*
   
 
 class App(ctk.CTk):
@@ -24,6 +25,7 @@ class App(ctk.CTk):
         self.page_two = ctk.CTkFrame(self)
         self.page_three = ctk.CTkFrame(self)
         self.menu_page = ctk.CTkFrame(self)
+        self.quest_page = ctk.CTkFrame(self)
 
         #Welcome page
 
@@ -58,11 +60,15 @@ class App(ctk.CTk):
         
         #Page 1
         label = ctk.CTkLabel(self.page_one,
-            text=wikipedia.summary("steroids", sentences = 3), font=("Helvetica",20),
+            text=split_string(wikipedia.summary("blue cheese", sentences = 1), 150), font=("Helvetica",25),
               height=500, width= 10)
-        label.pack(pady=100,padx = 500)
-        button = ctk.CTkButton(master=self.page_one, text="button")
-        button.place(relx=0.5, rely=0.9, anchor=ctk.S)
+        label.pack(pady=100,padx = 20)
+        button = ctk.CTkButton(master=self.page_one, text="Back",command=self.menu)
+        button.place(relx=0.2, rely=0.9, anchor=ctk.S)
+        button = ctk.CTkButton(master=self.page_one, text="Next", command=self.Questions)
+        button.place(relx=0.8, rely=0.9, anchor=ctk.S)
+
+        #Page 2
 
         # Show the menu page by default
         self.show_welcome()
@@ -78,6 +84,7 @@ class App(ctk.CTk):
         self.page_two.place_forget()
         self.page_three.place_forget()
         self.menu_page.place_forget()
+        self.quest_page.place_forget()
     
     def menu(self):
         self.hide_all_pages()
@@ -95,6 +102,10 @@ class App(ctk.CTk):
     def p3(self):
         self.hide_all_pages()
         self.page_three.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+    
+    def Questions(self):
+        self.hide_all_pages()
+        self.quest_page.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
 if __name__ == "__main__":
     app = App()
