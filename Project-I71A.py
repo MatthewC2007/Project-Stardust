@@ -60,7 +60,7 @@ class App(ctk.CTk):
         
         #Page 1
         label = ctk.CTkLabel(self.page_one,
-            text=split_string(wikipedia.summary("blue cheese", sentences = 1), 150), font=("Helvetica",25),
+            text=split_string(wikipedia.summary("volcanoes", sentences = 8), 150), font=("Helvetica",25),
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_one, text="Back",command=self.menu)
@@ -69,7 +69,29 @@ class App(ctk.CTk):
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
         #Page 2
+        label = ctk.CTkLabel(self.page_two,
+            text=split_string(wikipedia.summary("Slavery", sentences = 8), 150), font=("Helvetica",25),
+              height=500, width= 10)
+        label.pack(pady=100,padx = 20)
+        button = ctk.CTkButton(master=self.page_two, text="Back",command=self.menu)
+        button.place(relx=0.2, rely=0.9, anchor=ctk.S)
+        button = ctk.CTkButton(master=self.page_two, text="Next", command=self.Questions)
+        button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
+        #page 3
+        label = ctk.CTkLabel(self.page_three,
+            text=split_string(wikipedia.summary("Japanese Culture", sentences = 8), 150), font=("Helvetica",25),
+              height=500, width= 10)
+        label.pack(pady=100,padx = 20)
+        button = ctk.CTkButton(master=self.page_three, text="Back",command=self.menu)
+        button.place(relx=0.2, rely=0.9, anchor=ctk.S)
+        button = ctk.CTkButton(master=self.page_three, text="Next", command=self.Questions)
+        button.place(relx=0.8, rely=0.9, anchor=ctk.S)
+
+        #page 3b
+        button = ctk.CTkButton(master=self.quest_page, text="Back",command=self.p3)
+        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+        
         # Show the menu page by default
         self.show_welcome()
     
