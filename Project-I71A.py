@@ -51,12 +51,16 @@ class App(ctk.CTk):
         
 
         # Buttons on the navigation page to navigate to other pages
-        ctk.CTkButton(self.menu_page, text="P1",
-                       command=self.p1).pack(padx=200, pady=50)
-        ctk.CTkButton(self.menu_page, text="P2",
-                       command=self.p2).pack(padx=200, pady=50)
-        ctk.CTkButton(self.menu_page, text="P3",
-                       command=self.p3).pack(padx=200, pady=50)
+        label = ctk.CTkLabel(self.menu_page, text="Menu",
+            font=("Harlow Solid Italic",60))
+        label.pack(padx=500, pady=20)
+        ctk.CTkButton(self.menu_page, text="VOlcanoes",
+                       command=self.p1).pack(padx=500, pady=100)
+        ctk.CTkButton(self.menu_page, text="Slavery",
+                       command=self.p2).pack(padx=500, pady=100)
+        ctk.CTkButton(self.menu_page, text="Japan",
+                       command=self.p3).pack(padx=500, pady=100)
+        
         
         #Page 1
         label = ctk.CTkLabel(self.page_one,
