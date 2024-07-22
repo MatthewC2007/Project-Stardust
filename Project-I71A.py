@@ -2,7 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 import wikipedia
 from Text import*
-  
+
 
 class App(ctk.CTk):
     def __init__(self):
