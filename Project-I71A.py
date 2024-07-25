@@ -21,7 +21,7 @@ class App(ctk.CTk):
         
 
         # Initialize frames for the other pages but do not place them yet
-        self.page_one = ctk.CTkFrame(self)
+        self.page_volc = ctk.CTkFrame(self)
         self.page_two = ctk.CTkFrame(self)
         self.page_three = ctk.CTkFrame(self)
         self.menu_page = ctk.CTkFrame(self)
@@ -52,39 +52,59 @@ class App(ctk.CTk):
 
         # Buttons on the navigation page to navigate to other pages
         label = ctk.CTkLabel(self.menu_page, text="Menu",
-            font=("Harlow Solid Italic",60))
-        label.pack(padx=500, pady=20)
-        ctk.CTkButton(self.menu_page, text="VOlcanoes",
-                       command=self.p1).pack(padx=500, pady=100)
-        ctk.CTkButton(self.menu_page, text="Slavery",
-                       command=self.p2).pack(padx=500, pady=100)
+            font=("Harlow Solid Italic",100))
+        label.grid(row = 0, column = 2, columnspan=3)
+        ctk.CTkButton(self.menu_page, text="Volcanoes",
+            command=self.volc).grid(row = 2, column = 1, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="MLKJ",
+            command=self.p2).grid(row = 3, column = 4, pady = 40, padx = 30)
         ctk.CTkButton(self.menu_page, text="Japan",
-                       command=self.p3).pack(padx=500, pady=100)
+            command=self.p3).grid(row = 4, column = 4, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Yes",
+            command=self.volc).grid(row = 2, column = 2, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="No",
+            command=self.p2).grid(row = 3, column = 2, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 5, column = 1, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 5, column = 3, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 2, column = 4, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 1, column = 4, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 5, column = 4, pady = 40, padx = 30)
         
         
-        #Page 1
-        label = ctk.CTkLabel(self.page_one,
-            text=split_string(wikipedia.summary("volcanoes", sentences = 8), 150), font=("Helvetica",25),
+        #Page Volcano
+        label = ctk.CTkLabel(self.page_volc,
+            text=split_string(wikipedia.summary("volcanoes",
+                                 sentences = 10), 150), font=("Helvetica",25),
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
-        button = ctk.CTkButton(master=self.page_one, text="Back",command=self.menu)
+        button = ctk.CTkButton(master=self.page_volc,
+                                text="Back",command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
-        button = ctk.CTkButton(master=self.page_one, text="Next", command=self.Questions)
+        button = ctk.CTkButton(master=self.page_volc,
+                                text="Next", command=self.Questions)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
         #Page 2
         label = ctk.CTkLabel(self.page_two,
-            text=split_string(wikipedia.summary("Slavery", sentences = 8), 150), font=("Helvetica",25),
+            text=split_string(wikipedia.summary("MLKJ",
+                                 sentences = 10), 150), font=("Helvetica",25),
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
-        button = ctk.CTkButton(master=self.page_two, text="Back",command=self.menu)
+        button = ctk.CTkButton(master=self.page_two,
+                                text="Back",command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
-        button = ctk.CTkButton(master=self.page_two, text="Next", command=self.Questions)
+        button = ctk.CTkButton(master=self.page_two,
+                                text="Next", command=self.Questions)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
         #page 3
         label = ctk.CTkLabel(self.page_three,
-            text=split_string(wikipedia.summary("Japanese Culture", sentences = 8), 150), font=("Helvetica",25),
+            text=split_string(wikipedia.summary("Japanese Culture", sentences = 10), 150), font=("Helvetica",25),
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_three, text="Back",command=self.menu)
@@ -106,7 +126,7 @@ class App(ctk.CTk):
     def hide_all_pages(self):
         # Hide all pages
         self.welcome.place_forget()
-        self.page_one.place_forget()
+        self.page_volc.place_forget()
         self.page_two.place_forget()
         self.page_three.place_forget()
         self.menu_page.place_forget()
@@ -116,9 +136,9 @@ class App(ctk.CTk):
         self.hide_all_pages()
         self.menu_page.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-    def p1(self):
+    def volc(self):
         self.hide_all_pages()
-        self.page_one.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        self.page_volc.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         
 
     def p2(self):
