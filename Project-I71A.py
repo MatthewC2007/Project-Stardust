@@ -53,13 +53,13 @@ class App(ctk.CTk):
         # Buttons on the navigation page to navigate to other pages
         label = ctk.CTkLabel(self.menu_page, text="Menu",
             font=("Harlow Solid Italic",100))
-        label.grid(row = 0, column = 2, columnspan=3)
+        label.grid(row = 0, column = 2)
         ctk.CTkButton(self.menu_page, text="Volcanoes",
             command=self.volc).grid(row = 2, column = 1, pady = 40, padx = 30)
         ctk.CTkButton(self.menu_page, text="MLKJ",
-            command=self.p2).grid(row = 3, column = 4, pady = 40, padx = 30)
+            command=self.p2).grid(row = 3, column = 3, pady = 40, padx = 30)
         ctk.CTkButton(self.menu_page, text="Japan",
-            command=self.p3).grid(row = 4, column = 4, pady = 40, padx = 30)
+            command=self.p3).grid(row = 4, column = 3, pady = 40, padx = 30)
         ctk.CTkButton(self.menu_page, text="Yes",
             command=self.volc).grid(row = 2, column = 2, pady = 40, padx = 30)
         ctk.CTkButton(self.menu_page, text="No",
@@ -67,13 +67,11 @@ class App(ctk.CTk):
         ctk.CTkButton(self.menu_page, text="Test",
             command=self.p3).grid(row = 5, column = 1, pady = 40, padx = 30)
         ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 2, column = 3, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
+            command=self.p3).grid(row = 1, column = 3, pady = 40, padx = 30)
+        ctk.CTkButton(self.menu_page, text="Test",
             command=self.p3).grid(row = 5, column = 3, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="Test",
-            command=self.p3).grid(row = 2, column = 4, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="Test",
-            command=self.p3).grid(row = 1, column = 4, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="Test",
-            command=self.p3).grid(row = 5, column = 4, pady = 40, padx = 30)
         
         
         #Page Volcano
