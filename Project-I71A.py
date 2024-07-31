@@ -9,7 +9,7 @@ class App(ctk.CTk):
         super().__init__()
 
         ctk.set_appearance_mode("dark")  # Modes: system (default), light, dark
-        ctk.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
+        ctk.set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
 
 
         self.after(0, lambda: self.state('zoomed'))
@@ -56,26 +56,26 @@ class App(ctk.CTk):
         label = ctk.CTkLabel(self.menu_page, text="Menu",
             font=("Harlow Solid Italic",100))
         label.grid(row = 0, column = 2, columnspan = 1,pady = 60, padx = 60)
-        ctk.CTkButton(self.menu_page, text="Volcanoes",
+        button = ctk.CTkButton(self.menu_page, text="Volcanoes",
             command=self.volc).grid(row = 2, column = 1, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="MLKJ",
+        button = ctk.CTkButton(self.menu_page, text="MLKJ",
             command=self.p2).grid(row = 3, column = 3, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="Japan",
+        button = ctk.CTkButton(self.menu_page, text="Japan",
             command=self.p3).grid(row = 3, column = 1, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="Yes",
+        button = ctk.CTkButton(self.menu_page, text="Yes",
             command=self.volc).grid(row = 2, column = 2, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="No",
+        button = ctk.CTkButton(self.menu_page, text="No",
             command=self.p2).grid(row = 3, column = 2, pady = 40, padx = 30)
-        ctk.CTkButton(self.menu_page, text="Test",
+        button = ctk.CTkButton(self.menu_page, text="Test",
             command=self.p3).grid(row = 2, column = 3, pady = 40, padx = 30)
     
-        ctk.CTkButton(self.menu_page, text="Back", height=60, width=120,
+        button = ctk.CTkButton(self.menu_page, text="Back", height=60, width=120,
             command=self.show_welcome, font=("Helvetica",25)).grid(row = 9,
                                              column = 0, pady = 60, padx = 60)
-        ctk.CTkButton(self.menu_page, text="Quit", height=60, width=120,
+        button = ctk.CTkButton(self.menu_page, text="Quit", height=60, width=120,
             command=self.quit, font=("Helvetica",25)).grid(row = 9,
                                              column = 4, pady = 60, padx = 60)
-        ctk.CTkButton(self.menu_page,
+        button = ctk.CTkButton(self.menu_page,
          text = "Settings", height = 40, width = 120,
          command=self.settings,font=("Helvetica",20)).grid(row = 0, column = 0)
         
@@ -127,6 +127,15 @@ class App(ctk.CTk):
         label = ctk.CTkLabel(self.settings_page,
                               text="Settings",font=("Harlow Solid Italic",100))
         label.grid(row = 0, column = 2, columnspan = 1,pady = 60, padx = 60)
+        button = ctk.CTkButton(master=self.settings_page,
+                                text="Blue", command=self.blue_theme)
+        button.grid(row = 5, column = 2, columnspan = 1,pady = 60, padx = 60)
+        button = ctk.CTkButton(master=self.settings_page,
+                                text="Back", command=self.green_theme)
+        button.grid(row = 6, column = 2, columnspan = 1,pady = 60, padx = 60)
+        button = ctk.CTkButton(master=self.settings_page,
+                                text="Back", command=self.menu)
+        button.grid(row = 5, column = 0, columnspan = 1,pady = 60, padx = 60)
         
         # Show the menu page by default
         self.show_welcome()
@@ -169,6 +178,15 @@ class App(ctk.CTk):
     def settings(self):
         self.hide_all_pages()
         self.settings_page.place(relx=0.5, rely=0.5, anchor = tk.CENTER)
+
+    def blue_theme(self):
+        ctk.set_default_color_theme("blue")
+
+    def green_theme(self):
+        ctk.set_default_color_theme("green")   
+
+    def darkblue_theme(self):
+        ctk.set_default_color_theme("dark-blue") 
 
 if __name__ == "__main__":
     app = App()
