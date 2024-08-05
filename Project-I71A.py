@@ -2,9 +2,29 @@ import customtkinter as ctk
 import tkinter as tk
 import wikipedia
 from Text import*
+import threading as thread
 
+loaded_websites = {}
+
+class Thread(thread.Thread):
+    def __init__(self, website_name: str):
+        super().__init__()
+        self.website = website_name
+
+    def run(self):
+        loaded_websites[self.website] = wikipedia.summary(self.website)
 
 class App(ctk.CTk):
+    
+    websites = [
+        'volcanoes',
+        'MLKJ',
+        'Japanese Culture',
+        'Black hole',
+        'Maori wars',
+        'Trinity Test',
+    ]
+    
     def __init__(self):
         super().__init__()
 
@@ -18,15 +38,21 @@ class App(ctk.CTk):
         
         self.welcome = ctk.CTkFrame(self,width=500, height=500)
         self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
-        
+        self.title("Project-I71A")
 
-        # Initialize frames for the other pages but do not place them yet
+        for website_data in enumerate(self.websites):
+            self.load_website_async(website_data)
+
+        # gets the pages ready but doesn't place them
         self.page_volc = ctk.CTkFrame(self)
-        self.page_two = ctk.CTkFrame(self)
-        self.page_three = ctk.CTkFrame(self)
+        self.page_MLKJ = ctk.CTkFrame(self)
+        self.page_jap = ctk.CTkFrame(self)
         self.menu_page = ctk.CTkFrame(self)
         self.quest_page = ctk.CTkFrame(self)
         self.settings_page = ctk.CTkFrame(self)
+        self.page_blackh = ctk.CTkFrame(self)
+        self.page_trinity = ctk.CTkFrame(self)
+        self.page_maoriw = ctk.CTkFrame(self)
 
     #Welcome page
 
@@ -52,22 +78,22 @@ class App(ctk.CTk):
         self.to_menu_page_button.place(relx=0.1, rely=0.9, anchor=tk.CENTER)
         
 
-        # Buttons on the navigation page to navigate to other pages
+    # Buttons on the menu page to navigate to other pages
         label = ctk.CTkLabel(self.menu_page, text="Menu",
             font=("Harlow Solid Italic",100))
         label.grid(row = 0, column = 2, columnspan = 1,pady = 60, padx = 60)
         button = ctk.CTkButton(self.menu_page, text="Volcanoes",
             command=self.volc).grid(row = 2, column = 1, pady = 40, padx = 30)
         button = ctk.CTkButton(self.menu_page, text="MLKJ",
-            command=self.p2).grid(row = 3, column = 3, pady = 40, padx = 30)
+            command=self.MLKJ).grid(row = 3, column = 3, pady = 40, padx = 30)
         button = ctk.CTkButton(self.menu_page, text="Japan",
-            command=self.p3).grid(row = 3, column = 1, pady = 40, padx = 30)
-        button = ctk.CTkButton(self.menu_page, text="Yes",
-            command=self.volc).grid(row = 2, column = 2, pady = 40, padx = 30)
-        button = ctk.CTkButton(self.menu_page, text="No",
-            command=self.p2).grid(row = 3, column = 2, pady = 40, padx = 30)
-        button = ctk.CTkButton(self.menu_page, text="Test",
-            command=self.p3).grid(row = 2, column = 3, pady = 40, padx = 30)
+            command=self.Japan).grid(row = 3, column = 1, pady = 40, padx = 30)
+        button = ctk.CTkButton(self.menu_page, text="Black holes",
+            command=self.Blackhole).grid(row = 2, column = 2, pady = 40, padx = 30)
+        button = ctk.CTkButton(self.menu_page, text="Trinity test",
+            command=self.Trinity).grid(row = 3, column = 2, pady = 40, padx = 30)
+        button = ctk.CTkButton(self.menu_page, text="Maori Wars",
+            command=self.MaoriW).grid(row = 2, column = 3, pady = 40, padx = 30)
     
         button = ctk.CTkButton(self.menu_page, text="Back", height=60, width=120,
             command=self.show_welcome, font=("Helvetica",25)).grid(row = 9,
@@ -80,7 +106,7 @@ class App(ctk.CTk):
          command=self.settings,font=("Helvetica",20)).grid(row = 0, column = 0)
         
         
-        #Page Volcano
+    #Volcano
         label = ctk.CTkLabel(self.page_volc,
             text=split_string(wikipedia.summary("volcanoes",
                                  sentences = 10), 150), font=("Helvetica",25),
@@ -93,51 +119,112 @@ class App(ctk.CTk):
                                 text="Next", command=self.Questions)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
-        #Page 2
-        label = ctk.CTkLabel(self.page_two,
+    #MLKJ
+        label = ctk.CTkLabel(self.page_MLKJ,
             text=split_string(wikipedia.summary("MLKJ",
                                  sentences = 10), 150), font=("Helvetica",25),
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
-        button = ctk.CTkButton(master=self.page_two,
+        button = ctk.CTkButton(master=self.page_MLKJ,
                                 text="Back",command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
-        button = ctk.CTkButton(master=self.page_two,
+        button = ctk.CTkButton(master=self.page_MLKJ,
                                 text="Next", command=self.Questions)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
-        #page 3
-        label = ctk.CTkLabel(self.page_three,
+    #Japan culture
+        label = ctk.CTkLabel(self.page_jap,
             text=split_string(wikipedia.summary("Japanese Culture",
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
-        button = ctk.CTkButton(master=self.page_three,
+        button = ctk.CTkButton(master=self.page_jap,
                                 text="Back",command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
-        button = ctk.CTkButton(master=self.page_three,
+        button = ctk.CTkButton(master=self.page_jap,
                                 text="Next", command=self.Questions)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
-        #page 3b
+    #Black hole
+        label = ctk.CTkLabel(self.page_blackh,
+            text=split_string(wikipedia.summary("Black hole",
+             sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
+        label.pack(pady=100,padx = 20)
+        button = ctk.CTkButton(master=self.page_blackh,
+                                text="Back",command=self.menu)
+        button.place(relx=0.2, rely=0.9, anchor=ctk.S)
+        button = ctk.CTkButton(master=self.page_blackh,
+                                text="Next", command=self.Questions)
+        button.place(relx=0.8, rely=0.9, anchor=ctk.S)
+
+    #Trinity test
+        label = ctk.CTkLabel(self.page_trinity,
+            text=split_string(wikipedia.summary("Trinity test",
+             sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
+        label.pack(pady=100,padx = 20)
+        button = ctk.CTkButton(master=self.page_trinity,
+                                text="Back",command=self.menu)
+        button.place(relx=0.2, rely=0.9, anchor=ctk.S)
+        button = ctk.CTkButton(master=self.page_trinity,
+                                text="Next", command=self.Questions)
+        button.place(relx=0.8, rely=0.9, anchor=ctk.S)
+
+    #Maori Wars
+        label = ctk.CTkLabel(self.page_maoriw,
+            text=split_string(wikipedia.summary("Maori Wars",
+             sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
+        label.pack(pady=100,padx = 20)
+        button = ctk.CTkButton(master=self.page_maoriw,
+                                text="Back",command=self.menu)
+        button.place(relx=0.2, rely=0.9, anchor=ctk.S)
+        button = ctk.CTkButton(master=self.page_maoriw,
+                                text="Next", command=self.Questions)
+        button.place(relx=0.8, rely=0.9, anchor=ctk.S)
+
+    #Volc Quiz
         button = ctk.CTkButton(master=self.quest_page,
-                                text="Back",command=self.p3)
+                                text="Back",command=self.volc)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
-        #Settings Page
+    #Jap Quiz
+        button = ctk.CTkButton(master=self.quest_page,
+                                text="Back",command=self.Japan)
+        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+
+    #MLKJ Quiz
+        button = ctk.CTkButton(master=self.quest_page,
+                                text="Back",command=self.MLKJ)
+        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+
+    #Black Hole Quiz
+        button = ctk.CTkButton(master=self.quest_page,
+                                text="Back",command=self.Blackhole)
+        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+
+    #Trinity Test Quiz
+        button = ctk.CTkButton(master=self.quest_page,
+                                text="Back",command=self.Blackhole)
+        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+
+    #Maori Wars Quiz
+        button = ctk.CTkButton(master=self.quest_page,
+                                text="Back",command=self.Blackhole)
+        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+
+    #Settings Page
         label = ctk.CTkLabel(self.settings_page,
                               text="Settings",font=("Harlow Solid Italic",100))
-        label.grid(row = 0, column = 2, columnspan = 1,pady = 60, padx = 60)
+        label.grid(row = 0, column = 1, columnspan = 1,pady = 60, padx = 60)
         button = ctk.CTkButton(master=self.settings_page,
-                                text="Blue", command=self.blue_theme)
+                                text="Light mode", command=self.light_mode)
+        button.grid(row = 5, column = 1, columnspan = 1,pady = 60, padx = 60)
+        button = ctk.CTkButton(master=self.settings_page,
+                                text="Dark mode", command=self.dark_mode)
         button.grid(row = 5, column = 2, columnspan = 1,pady = 60, padx = 60)
-        button = ctk.CTkButton(master=self.settings_page,
-                                text="Back", command=self.green_theme)
-        button.grid(row = 6, column = 2, columnspan = 1,pady = 60, padx = 60)
         button = ctk.CTkButton(master=self.settings_page,
                                 text="Back", command=self.menu)
         button.grid(row = 5, column = 0, columnspan = 1,pady = 60, padx = 60)
         
-        # Show the menu page by default
+    # Show the menu page by default
         self.show_welcome()
     
     def show_welcome(self):
@@ -148,11 +235,14 @@ class App(ctk.CTk):
         # Hide all pages
         self.welcome.place_forget()
         self.page_volc.place_forget()
-        self.page_two.place_forget()
-        self.page_three.place_forget()
+        self.page_MLKJ.place_forget()
+        self.page_jap.place_forget()
         self.menu_page.place_forget()
         self.quest_page.place_forget()
         self.settings_page.place_forget()
+        self.page_blackh.place_forget()
+        self.page_maoriw.place_forget()
+        self.page_trinity.place_forget()
     
     def menu(self):
         self.hide_all_pages()
@@ -162,15 +252,26 @@ class App(ctk.CTk):
         self.hide_all_pages()
         self.page_volc.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         
-
-    def p2(self):
+    def MLKJ(self):
         self.hide_all_pages()
-        self.page_two.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        self.page_MLKJ.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-    def p3(self):
+    def Japan(self):
         self.hide_all_pages()
-        self.page_three.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
-    
+        self.page_jap.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Blackhole(self):
+        self.hide_all_pages()
+        self.page_blackh.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Trinity(self):
+        self.hide_all_pages()
+        self.page_trinity.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def MaoriW(self):
+        self.hide_all_pages()
+        self.page_maoriw.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
     def Questions(self):
         self.hide_all_pages()
         self.quest_page.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -179,14 +280,18 @@ class App(ctk.CTk):
         self.hide_all_pages()
         self.settings_page.place(relx=0.5, rely=0.5, anchor = tk.CENTER)
 
-    def blue_theme(self):
-        ctk.set_default_color_theme("blue")
+    def dark_mode(self):
+        ctk.set_appearance_mode("dark")
 
-    def green_theme(self):
-        ctk.set_default_color_theme("green")   
+    def light_mode(self):
+        ctk.set_appearance_mode("light")
 
-    def darkblue_theme(self):
-        ctk.set_default_color_theme("dark-blue") 
+    def load_website_async(self, website_data):
+        index, website = list(website_data)
+        Thread(website).start()
+
+#Sets the mode to dark by default
+mode = "dark"
 
 if __name__ == "__main__":
     app = App()
