@@ -45,14 +45,20 @@ class App(ctk.CTk):
 
         # gets the pages ready but doesn't place them
         self.page_volc = ctk.CTkFrame(self)
+        self.page_volcquiz = ctk.CTkFrame(self)
         self.page_MLKJ = ctk.CTkFrame(self)
+        self.page_MLKJquiz = ctk.CTkFrame(self)
         self.page_jap = ctk.CTkFrame(self)
+        self.page_japquiz = ctk.CTkFrame(self)
         self.menu_page = ctk.CTkFrame(self)
-        self.quest_page = ctk.CTkFrame(self)
         self.settings_page = ctk.CTkFrame(self)
         self.page_blackh = ctk.CTkFrame(self)
+        self.page_blackhquiz = ctk.CTkFrame(self)
         self.page_trinity = ctk.CTkFrame(self)
+        self.page_trinityquiz = ctk.CTkFrame(self)
         self.page_maoriw = ctk.CTkFrame(self)
+        self.page_maoriquiz = ctk.CTkFrame(self)
+
 
     #Welcome page
 
@@ -113,10 +119,10 @@ class App(ctk.CTk):
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_volc,
-                                text="Back",command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_volc,
-                                text="Next", command=self.Questions)
+            text="Next", height=60, width=120,font=("Helvetica",25),command=self.Volcquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #MLKJ
@@ -126,10 +132,10 @@ class App(ctk.CTk):
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_MLKJ,
-                                text="Back",command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_MLKJ,
-                                text="Next", command=self.Questions)
+            text="Next",height=60,width=120,font=("Helvetica",25),command=self.MLKJquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Japan culture
@@ -138,10 +144,10 @@ class App(ctk.CTk):
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_jap,
-                                text="Back",command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_jap,
-                                text="Next", command=self.Questions)
+            text="Next",height=60, width=120,font=("Helvetica",25),command=self.Japquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Black hole
@@ -150,10 +156,10 @@ class App(ctk.CTk):
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_blackh,
-                                text="Back",command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_blackh,
-                                text="Next", command=self.Questions)
+            text="Next",height=60,width=120,font=("Helvetica",25), command=self.Blackhquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Trinity test
@@ -162,10 +168,10 @@ class App(ctk.CTk):
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_trinity,
-                                text="Back",command=self.menu)
+            text="Back",height=60, width=120,command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_trinity,
-                                text="Next", command=self.Questions)
+            text="Next",height=60, width=120,command=self.Trinityquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Maori Wars
@@ -174,40 +180,40 @@ class App(ctk.CTk):
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_maoriw,
-                                text="Back",command=self.menu)
+            text="Back",height=60, width=120,command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_maoriw,
-                                text="Next", command=self.Questions)
+            text="Next",height=60, width=120,command=self.Maoriwquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Volc Quiz
-        button = ctk.CTkButton(master=self.quest_page,
+        button = ctk.CTkButton(master=self.page_volcquiz,
                                 text="Back",command=self.volc)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #Jap Quiz
-        button = ctk.CTkButton(master=self.quest_page,
+        button = ctk.CTkButton(master=self.page_japquiz,
                                 text="Back",command=self.Japan)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #MLKJ Quiz
-        button = ctk.CTkButton(master=self.quest_page,
+        button = ctk.CTkButton(master=self.page_MLKJquiz,
                                 text="Back",command=self.MLKJ)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #Black Hole Quiz
-        button = ctk.CTkButton(master=self.quest_page,
+        button = ctk.CTkButton(master=self.page_blackhquiz,
                                 text="Back",command=self.Blackhole)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #Trinity Test Quiz
-        button = ctk.CTkButton(master=self.quest_page,
-                                text="Back",command=self.Blackhole)
+        button = ctk.CTkButton(master=self.page_trinityquiz,
+                                text="Back",command=self.Trinity)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #Maori Wars Quiz
-        button = ctk.CTkButton(master=self.quest_page,
-                                text="Back",command=self.Blackhole)
+        button = ctk.CTkButton(master=self.page_maoriquiz,
+                                text="Back",command=self.MaoriW)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #Settings Page
@@ -224,12 +230,9 @@ class App(ctk.CTk):
                                 text="Back", command=self.menu)
         button.grid(row = 5, column = 0, columnspan = 1,pady = 60, padx = 60)
         
-    # Show the menu page by default
+    # Show the welcome page by default
         self.show_welcome()
     
-    def show_welcome(self):
-        self.hide_all_pages()
-        self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def hide_all_pages(self):
         # Hide all pages
@@ -238,12 +241,22 @@ class App(ctk.CTk):
         self.page_MLKJ.place_forget()
         self.page_jap.place_forget()
         self.menu_page.place_forget()
-        self.quest_page.place_forget()
         self.settings_page.place_forget()
         self.page_blackh.place_forget()
         self.page_maoriw.place_forget()
         self.page_trinity.place_forget()
+        self.page_trinityquiz.place_forget()
+        self.page_maoriquiz.place_forget()
+        self.page_blackhquiz.place_forget()
+        self.page_japquiz.place_forget()
+        self.page_blackhquiz.place_forget()
+        self.page_volcquiz.place_forget()
+        
     
+    def show_welcome(self):
+        self.hide_all_pages()
+        self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
     def menu(self):
         self.hide_all_pages()
         self.menu_page.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -272,9 +285,29 @@ class App(ctk.CTk):
         self.hide_all_pages()
         self.page_maoriw.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-    def Questions(self):
+    def Volcquiz(self):
         self.hide_all_pages()
-        self.quest_page.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        self.page_volcquiz.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def MLKJquiz(self):
+        self.hide_all_pages()
+        self.page_MLKJquiz.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Blackhquiz(self):
+        self.hide_all_pages()
+        self.page_blackhquiz.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Japquiz(self):
+        self.hide_all_pages()
+        self.page_japquiz.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Trinityquiz(self):
+        self.hide_all_pages()
+        self.page_trinityquiz.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Maoriwquiz(self):
+        self.hide_all_pages()
+        self.page_maoriquiz.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def settings(self):
         self.hide_all_pages()
@@ -290,8 +323,6 @@ class App(ctk.CTk):
         index, website = list(website_data)
         Thread(website).start()
 
-#Sets the mode to dark by default
-mode = "dark"
 
 if __name__ == "__main__":
     app = App()
