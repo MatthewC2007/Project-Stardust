@@ -2,4 +2,4 @@ import wikipedia
 
 
 
-print(wikipedia.summary("steroids", sentences = ))
+print(wikipedia.summary("Maori Wars", sentences = 20))
