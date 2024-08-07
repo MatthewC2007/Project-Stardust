@@ -43,7 +43,7 @@ class App(ctk.CTk):
         for website_data in enumerate(self.websites):
             self.load_website_async(website_data)
 
-        # gets the pages ready but doesn't place them
+        # G ets the pages ready but doesn't place them
         self.page_volc = ctk.CTkFrame(self)
         self.page_volcquiz = ctk.CTkFrame(self)
         self.page_MLKJ = ctk.CTkFrame(self)
@@ -220,14 +220,14 @@ class App(ctk.CTk):
         label = ctk.CTkLabel(self.settings_page,
                               text="Settings",font=("Harlow Solid Italic",100))
         label.grid(row = 0, column = 1, columnspan = 1,pady = 60, padx = 60)
-        button = ctk.CTkButton(master=self.settings_page,
-                                text="Light mode", command=self.light_mode)
+        button = ctk.CTkButton(master=self.settings_page,text="Light mode",
+            height=60, width=120,font=("Helvetica",25), command=self.light_mode)
         button.grid(row = 5, column = 1, columnspan = 1,pady = 60, padx = 60)
-        button = ctk.CTkButton(master=self.settings_page,
-                                text="Dark mode", command=self.dark_mode)
+        button = ctk.CTkButton(master=self.settings_page,text="Dark mode",
+            height=60, width=120,font=("Helvetica",25),command=self.dark_mode)
         button.grid(row = 5, column = 2, columnspan = 1,pady = 60, padx = 60)
-        button = ctk.CTkButton(master=self.settings_page,
-                                text="Back", command=self.menu)
+        button = ctk.CTkButton(master=self.settings_page,text="Back",
+            height=60, width=120,font=("Helvetica",25), command=self.menu)
         button.grid(row = 5, column = 0, columnspan = 1,pady = 60, padx = 60)
         
     # Show the welcome page by default
