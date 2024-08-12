@@ -212,9 +212,25 @@ class App(ctk.CTk):
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
     #Maori Wars Quiz
+        label = ctk.CTkLabel(self.page_maoriquiz,
+                              text="Settings",font=("Harlow Solid Italic",100))
+        label.grid(row = 0, column = 1, columnspan = 1,pady = 60, padx = 120)
         button = ctk.CTkButton(master=self.page_maoriquiz,
                                 text="Back",command=self.MaoriW)
-        button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+        button.grid(row = 9, column = 0,pady = 10, padx = 30)
+        button = ctk.CTkButton(master=self.page_maoriquiz,
+                                text="Next",command=self.MaoriW)
+        button.grid(row = 9, column = 2,pady = 10, padx = 30)
+        radio_var = ctk.StringVar(master=self.page_maoriquiz,
+                                value="other")
+        my_rad1 = ctk.CTkRadioButton(master=self.page_maoriquiz,
+            text="The Maori are sigma", value="Yes", variable=radio_var)
+        my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
+        my_rad2 = ctk.CTkRadioButton(master=self.page_maoriquiz,
+            text="I like Maccas", value="No",variable=radio_var)
+        my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+        
+        
 
     #Settings Page
         label = ctk.CTkLabel(self.settings_page,
