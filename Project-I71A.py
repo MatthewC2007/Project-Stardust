@@ -218,9 +218,9 @@ class App(ctk.CTk):
         button = ctk.CTkButton(master=self.page_maoriquiz,
                                 text="Back",command=self.MaoriW)
         button.grid(row = 9, column = 0,pady = 10, padx = 30)
-        button = ctk.CTkButton(master=self.page_maoriquiz,
-                                text="Next",command=self.MaoriW)
-        button.grid(row = 9, column = 2,pady = 10, padx = 30)
+        button1 = ctk.CTkButton(master=self.page_maoriquiz,
+                                text="Next")
+        button1.grid_forget()
         radio_var = ctk.StringVar(master=self.page_maoriquiz,
                                 value="other")
         my_rad1 = ctk.CTkRadioButton(master=self.page_maoriquiz,
@@ -229,6 +229,9 @@ class App(ctk.CTk):
         my_rad2 = ctk.CTkRadioButton(master=self.page_maoriquiz,
             text="I like Maccas", value="No",variable=radio_var)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+        
+        
+        
         
         
 
@@ -338,6 +341,8 @@ class App(ctk.CTk):
     def load_website_async(self, website_data):
         index, website = list(website_data)
         Thread(website).start()
+
+
 
 
 if __name__ == "__main__":
