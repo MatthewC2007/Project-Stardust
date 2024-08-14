@@ -221,8 +221,8 @@ class App(ctk.CTk):
         button1 = ctk.CTkButton(master=self.page_maoriquiz,
                                 text="Next")
         button1.grid_forget()
-        radio_var = ctk.StringVar(master=self.page_maoriquiz,
-                                value="other")
+        radio_var = ctk.IntVar(master=self.page_maoriquiz,
+                                value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_maoriquiz,
             text="The Maori are sigma", value="Yes", variable=radio_var)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
