@@ -210,7 +210,14 @@ class App(ctk.CTk):
         button = ctk.CTkButton(master=self.page_trinityquiz,
                                 text="Back",command=self.Trinity)
         button.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
-
+        
+        
+        
+        def toggle_widget():
+            if radio_var.get() == 1:
+                button1.grid(row = 9, column = 2,pady = 10, padx = 30)
+            else:
+                button1.grid_forget()
     #Maori Wars Quiz
         label = ctk.CTkLabel(self.page_maoriquiz,
                               text="Settings",font=("Harlow Solid Italic",100))
@@ -224,11 +231,12 @@ class App(ctk.CTk):
         radio_var = ctk.IntVar(master=self.page_maoriquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_maoriquiz,
-            text="The Maori are sigma", value="Yes", variable=radio_var)
+            text="The Maori are sigma", value=1, variable=radio_var,command=toggle_widget)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_maoriquiz,
-            text="I like Maccas", value="No",variable=radio_var)
+            text="I like Maccas", value=2,variable=radio_var,command=toggle_widget)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+        
         
         
         
