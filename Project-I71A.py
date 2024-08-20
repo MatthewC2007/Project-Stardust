@@ -96,17 +96,17 @@ class App(ctk.CTk):
         button = ctk.CTkButton(self.menu_page, text="Japan",
             command=self.Japan).grid(row = 3, column = 1, pady = 40, padx = 30)
         button = ctk.CTkButton(self.menu_page, text="Black holes",
-            command=self.Blackhole).grid(row = 2, column = 2, pady = 40, padx = 30)
+            command=self.Blackhole).grid(row = 2, column = 2, pady =40, padx=30)
         button = ctk.CTkButton(self.menu_page, text="Trinity test",
-            command=self.Trinity).grid(row = 3, column = 2, pady = 40, padx = 30)
+            command=self.Trinity).grid(row = 3, column = 2, pady = 40, padx =30)
         button = ctk.CTkButton(self.menu_page, text="Maori Wars",
-            command=self.MaoriW).grid(row = 2, column = 3, pady = 40, padx = 30)
+            command=self.MaoriW).grid(row = 2, column = 3, pady = 40, padx =30)
     
-        button = ctk.CTkButton(self.menu_page, text="Back", height=60, width=120,
+        button = ctk.CTkButton(self.menu_page, text="Back", height=60,width=120,
             command=self.show_welcome, font=("Helvetica",25)).grid(row = 9,
                                              column = 0, pady = 60, padx = 60)
-        button = ctk.CTkButton(self.menu_page, text="Quit", height=60, width=120,
-            command=self.quit, font=("Helvetica",25)).grid(row = 9,
+        button = ctk.CTkButton(self.menu_page, text="Quit", height=60, 
+            width=120,command=self.quit, font=("Helvetica",25)).grid(row = 9,
                                              column = 4, pady = 60, padx = 60)
         button = ctk.CTkButton(self.menu_page,
          text = "Settings", height = 40, width = 120,
@@ -120,10 +120,12 @@ class App(ctk.CTk):
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_volc,
-            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),
+                                                command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_volc,
-            text="Next", height=60, width=120,font=("Helvetica",25),command=self.Volcquiz)
+            text="Next", height=60, width=120,font=("Helvetica",25),
+                                                command=self.Volcquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #MLKJ
@@ -133,10 +135,12 @@ class App(ctk.CTk):
               height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_MLKJ,
-            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),
+                                                command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_MLKJ,
-            text="Next",height=60,width=120,font=("Helvetica",25),command=self.MLKJquiz)
+            text="Next",height=60,width=120,font=("Helvetica",25),
+                                                command=self.MLKJquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Japan culture
@@ -145,10 +149,12 @@ class App(ctk.CTk):
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_jap,
-            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),
+                                                command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_jap,
-            text="Next",height=60, width=120,font=("Helvetica",25),command=self.Japquiz)
+            text="Next",height=60, width=120,font=("Helvetica",25),
+                                                command=self.Japquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Black hole
@@ -157,10 +163,12 @@ class App(ctk.CTk):
              sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_blackh,
-            text="Back",height=60, width=120,font=("Helvetica",25),command=self.menu)
+            text="Back",height=60, width=120,font=("Helvetica",25),
+                                                command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_blackh,
-            text="Next",height=60,width=120,font=("Helvetica",25), command=self.Blackhquiz)
+            text="Next",height=60,width=120,font=("Helvetica",25),
+                                                command=self.Blackhquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
     #Trinity test
@@ -195,7 +203,8 @@ class App(ctk.CTk):
             else:
                 button6.grid_forget()
         label = ctk.CTkLabel(self.page_volcquiz,
-                              text="What is a volcano?",font=("Harlow Solid Italic",50))
+                              text="What is a volcano?",
+                              font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_volcquiz,
                                 text="Back",command=self.volc)
@@ -206,7 +215,8 @@ class App(ctk.CTk):
         radio_var5 = ctk.IntVar(master=self.page_volcquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_volcquiz,
-            text="A rupture in the crust", value=1, variable=radio_var5,command=VolcButton)
+            text="A rupture in the crust", value=1, variable=radio_var5,
+                                                        command=VolcButton)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_volcquiz,
             text="A spicy hill", value=2,variable=radio_var5,command=VolcButton)
@@ -225,7 +235,8 @@ class App(ctk.CTk):
             else:
                 button5.grid_forget()
         label = ctk.CTkLabel(self.page_japquiz,
-                              text="What groups helped shape Japanese Culture?",font=("Harlow Solid Italic",50))
+                              text="What groups helped shape Japanese Culture?",
+                              font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_japquiz,
                                 text="Back",command=self.Japan)
@@ -236,7 +247,8 @@ class App(ctk.CTk):
         radio_var4 = ctk.IntVar(master=self.page_japquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_japquiz,
-            text="The Maori are sigma", value=1, variable=radio_var4,command=JapButton)
+            text="The Maori are sigma", value=1, variable=radio_var4,
+                                                    command=JapButton)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_japquiz,
             text="I like Maccas", value=2,variable=radio_var4,command=JapButton)
@@ -261,10 +273,12 @@ class App(ctk.CTk):
         radio_var3 = ctk.IntVar(master=self.page_MLKJquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_MLKJquiz,
-            text="The Maori are sigma", value=1, variable=radio_var3,command=MLKJButtob)
+            text="The Maori are sigma", value=1, variable=radio_var3,
+                                                    command=MLKJButtob)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_MLKJquiz,
-            text="I like Maccas", value=2,variable=radio_var3,command=MLKJButtob)
+            text="I like Maccas", value=2,variable=radio_var3,
+                                                    command=MLKJButtob)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
         
         
@@ -275,7 +289,7 @@ class App(ctk.CTk):
             else:
                 button3.grid_forget()
         label = ctk.CTkLabel(self.page_blackhquiz,
-                              text="What is a black hole?",font=("Harlow Solid Italic",50))
+                text="What is a black hole?",font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_blackhquiz,
                                 text="Back",command=self.Blackhole)
@@ -286,10 +300,12 @@ class App(ctk.CTk):
         radio_var2 = ctk.IntVar(master=self.page_blackhquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_blackhquiz,
-            text="The Maori are sigma", value=1, variable=radio_var2,command=BlackHButton)
+            text="The Maori are sigma", value=1, variable=radio_var2,
+                                                        command=BlackHButton)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_blackhquiz,
-            text="I like Maccas", value=2,variable=radio_var2,command=BlackHButton)
+            text="I like Maccas", value=2,variable=radio_var2,
+                                                        command=BlackHButton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
 
         
@@ -300,7 +316,7 @@ class App(ctk.CTk):
             else:
                 button2.grid_forget()
         label = ctk.CTkLabel(self.page_trinityquiz,
-                              text="What is the Trimity test?",font=("Harlow Solid Italic",50))
+            text="What is the Trimity test?",font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_trinityquiz,
                                 text="Back",command=self.Trinity)
@@ -311,10 +327,12 @@ class App(ctk.CTk):
         radio_var1 = ctk.IntVar(master=self.page_trinityquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_trinityquiz,
-            text="The Maori are sigma", value=2, variable=radio_var1,command=Trinitybutton)
+            text="The Maori are sigma", value=2, variable=radio_var1,
+                                                    command=Trinitybutton)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_trinityquiz,
-            text="I like Maccas", value=1,variable=radio_var1,command=Trinitybutton)
+            text="I like Maccas", value=1,variable=radio_var1,
+                                                    command=Trinitybutton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
         
         
@@ -325,7 +343,7 @@ class App(ctk.CTk):
             else:
                 button1.grid_forget()
         label = ctk.CTkLabel(self.page_maoriquiz,
-                              text="What were the Maori Wars?",font=("Harlow Solid Italic",50))
+            text="What were the Maori Wars?",font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_maoriquiz,
                                 text="Back",command=self.MaoriW)
@@ -336,10 +354,12 @@ class App(ctk.CTk):
         radio_var = ctk.IntVar(master=self.page_maoriquiz,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_maoriquiz,
-            text="The Maori are sigma", value=1, variable=radio_var,command=Maoributton)
+                            text="The Maori are sigma", value=1,
+                                variable=radio_var,command=Maoributton)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_maoriquiz,
-            text="I like Maccas", value=2,variable=radio_var,command=Maoributton)
+            text="I like Maccas", value=2,variable=radio_var,
+                                        command=Maoributton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
           
 
@@ -455,3 +475,4 @@ class App(ctk.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+    
