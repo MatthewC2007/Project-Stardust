@@ -43,7 +43,7 @@ class App(ctk.CTk):
         for website_data in enumerate(self.websites):
             self.load_website_async(website_data)
 
-        # G ets the pages ready but doesn't place them
+        #Gets the pages ready but doesn't place them
         self.page_volc = ctk.CTkFrame(self)
         self.page_volcquiz1 = ctk.CTkFrame(self)
         self.page_volcquiz2 = ctk.CTkFrame(self)
@@ -249,7 +249,7 @@ class App(ctk.CTk):
                                 text="Back",command=self.Volcquiz1)
         button.grid(row = 9, column = 0,pady = 10, padx = 30)
         button6a = ctk.CTkButton(master=self.page_volcquiz2,
-                                text="Next",command=self.Volcquiz2)
+                                text="Next",command=self.credits)
         button6a.grid_forget()
         radio_var5a = ctk.IntVar(master=self.page_volcquiz2,
                                 value=0)
@@ -269,7 +269,7 @@ class App(ctk.CTk):
       
     
 
-    #Jap Quiz
+    #Japanese Quiz Page 1
         def JapButton():
             if radio_var4.get() == 1:
                 button5.grid(row = 9, column = 2,pady = 10, padx = 30)
@@ -283,7 +283,7 @@ class App(ctk.CTk):
                                 text="Back",command=self.Japan)
         button.grid(row = 9, column = 0,pady = 10, padx = 30)
         button5 = ctk.CTkButton(master=self.page_japquiz1,
-                                text="Next")
+                                text="Next",command=self.Japquiz2)
         button5.grid_forget()
         radio_var4 = ctk.IntVar(master=self.page_japquiz1,
                                 value=0)
@@ -295,7 +295,35 @@ class App(ctk.CTk):
             text="I like Maccas", value=2,variable=radio_var4,command=JapButton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
 
-    #MLKJ Quiz
+    #Japanese Quiz Page 2
+        def JapButtonA():
+            if radio_var4a.get() == 1:
+                button5a.grid(row = 9, column = 2,pady = 10, padx = 30)
+            else:
+                button5a.grid_forget()
+        label = ctk.CTkLabel(self.page_japquiz2,
+                                text="What groups helped shape Japanese Culture?",
+                                font=("Harlow Solid Italic",50))
+        label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
+        button = ctk.CTkButton(master=self.page_japquiz2,
+                                text="Back",command=self.Japquiz)
+        button.grid(row = 9, column = 0,pady = 10, padx = 30)
+        button5a = ctk.CTkButton(master=self.page_japquiz2,
+                                text="Next",command=self.credits)
+        button5a.grid_forget()
+        radio_var4a = ctk.IntVar(master=self.page_japquiz2,
+                                value=0)
+        my_rad1 = ctk.CTkRadioButton(master=self.page_japquiz2,
+                            text="The Maori are sigma", value=1,
+                            variable=radio_var4a,command=JapButtonA)
+        my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
+        my_rad2 = ctk.CTkRadioButton(master=self.page_japquiz2,
+                            text="I like Maccas", 
+                            value=2, variable=radio_var4a,command=JapButtonA)
+        my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+
+        
+    #MLKJ Quiz Page 1
         def MLKJButtob():
             if radio_var3.get() == 1:
                 button4.grid(row = 9, column = 2,pady = 10, padx = 30)
@@ -309,7 +337,7 @@ class App(ctk.CTk):
                                 text="Back",command=self.MLKJ)
         button.grid(row = 9, column = 0,pady = 10, padx = 30)
         button4 = ctk.CTkButton(master=self.page_MLKJquiz1,
-                                text="Next")
+                                text="Next",command=self.MLKJquiz2)
         button4.grid_forget()
         radio_var3 = ctk.IntVar(master=self.page_MLKJquiz1,
                                 value=0)
@@ -321,9 +349,37 @@ class App(ctk.CTk):
             text="I like Maccas", value=2,variable=radio_var3,
                                                     command=MLKJButtob)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+    
+    #MLKJ Quiz Page 2
+        def MLKJButtobA():
+            if radio_var3a.get() == 1:
+                button4a.grid(row = 9, column = 2,pady = 10, padx = 30)
+            else:
+                button4a.grid_forget()
+        label = ctk.CTkLabel(self.page_MLKJquiz2,
+                                text="Who is Martin Luther King Junior?"
+                                ,font=("Harlow Solid Italic",50))
+        label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
+        button = ctk.CTkButton(master=self.page_MLKJquiz2,
+                                text="Back",command=self.MLKJquiz)
+        button.grid(row = 9, column = 0,pady = 10, padx = 30)
+        button4a = ctk.CTkButton(master=self.page_MLKJquiz2,
+                                text="Next",command=self.credits)
+        button4a.grid_forget()
+        radio_var3a = ctk.IntVar(master=self.page_MLKJquiz2,
+                                value=0)
+        my_rad1 = ctk.CTkRadioButton(master=self.page_MLKJquiz2,
+            text="The Maori are sigma", value=1, variable=radio_var3a,
+                                                    command=MLKJButtobA)
+        my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
+        my_rad2 = ctk.CTkRadioButton(master=self.page_MLKJquiz2,
+            text="I like Maccas", value=2,variable=radio_var3a,
+                                                    command=MLKJButtobA)
+        my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+
         
         
-        #Black Hole Quiz
+        #Black Hole Quiz Page 1
         def BlackHButton():
             if radio_var2.get() == 1:
                 button3.grid(row = 9, column = 2,pady = 10, padx = 30)
@@ -336,7 +392,7 @@ class App(ctk.CTk):
                                 text="Back",command=self.Blackhole)
         button.grid(row = 9, column = 0,pady = 10, padx = 30)
         button3 = ctk.CTkButton(master=self.page_blackhquiz1,
-                                text="Next")
+                                text="Next", command=self.Blackhquiz2)
         button3.grid_forget()
         radio_var2 = ctk.IntVar(master=self.page_blackhquiz1,
                                 value=0)
@@ -349,8 +405,34 @@ class App(ctk.CTk):
                                                         command=BlackHButton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
 
+    #Black Hole Quiz Page 2 
+        def BlackHButtonA():
+            if radio_var2a.get() == 1:
+                button3a.grid(row = 9, column = 2,pady = 10, padx = 30)
+            else:
+                button3a.grid_forget()
+        label = ctk.CTkLabel(self.page_blackhquiz2,
+                text="What is a black hole?",font=("Harlow Solid Italic",50))
+        label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
+        button = ctk.CTkButton(master=self.page_blackhquiz2,
+                                text="Back",command=self.Blackhquiz)
+        button.grid(row = 9, column = 0,pady = 10, padx = 30)
+        button3a = ctk.CTkButton(master=self.page_blackhquiz2,
+                                text="Next", command=self.credits)
+        button3a.grid_forget()
+        radio_var2a = ctk.IntVar(master=self.page_blackhquiz2,
+                                value=0)
+        my_rad1 = ctk.CTkRadioButton(master=self.page_blackhquiz2,
+            text="The Maori are sigma", value=1, variable=radio_var2a,
+                                                        command=BlackHButtonA)
+        my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
+        my_rad2 = ctk.CTkRadioButton(master=self.page_blackhquiz2,
+            text="I like Maccas", value=2,variable=radio_var2a,
+                                                        command=BlackHButtonA)
+        my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
         
-        #Trinity Test Quiz
+
+        #Trinity Test Quiz Page 1
         def Trinitybutton():
             if radio_var1.get() == 1:
                 button2.grid(row = 9, column = 2,pady = 10, padx = 30)
@@ -363,7 +445,7 @@ class App(ctk.CTk):
                                 text="Back",command=self.Trinity)
         button.grid(row = 9, column = 0,pady = 10, padx = 30)
         button2 = ctk.CTkButton(master=self.page_trinityquiz1,
-                                text="Next")
+                                text="Next", command=self.Trinityquiz2)
         button2.grid_forget()
         radio_var1 = ctk.IntVar(master=self.page_trinityquiz1,
                                 value=0)
@@ -376,8 +458,34 @@ class App(ctk.CTk):
                                                     command=Trinitybutton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
         
+    #Trinity Test Quiz Page 2
+        def TrinitybuttonA():
+            if radio_var1a.get() == 1:
+                button2a.grid(row = 9, column = 2,pady = 10, padx = 30)
+            else:
+                button2a.grid_forget()
+        label = ctk.CTkLabel(self.page_trinityquiz2,
+            text="What is the Trimity test?",font=("Harlow Solid Italic",50))
+        label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
+        button = ctk.CTkButton(master=self.page_trinityquiz2,
+                                text="Back",command=self.Trinityquiz)
+        button.grid(row = 9, column = 0,pady = 10, padx = 30)
+        button2a = ctk.CTkButton(master=self.page_trinityquiz2,
+                                text="Next", command=self.credits)
+        button2a.grid_forget()
+        radio_var1a = ctk.IntVar(master=self.page_trinityquiz2,
+                                value=0)
+        my_rad1 = ctk.CTkRadioButton(master=self.page_trinityquiz2,
+            text="The Maori are sigma", value=2, variable=radio_var1a,
+                                                    command=TrinitybuttonA)
+        my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
+        my_rad2 = ctk.CTkRadioButton(master=self.page_trinityquiz2,
+            text="I like Maccas", value=1,variable=radio_var1a,
+                                                    command=TrinitybuttonA)
+        my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+
         
-        #Maori Wars Quiz
+        #Maori Wars Quiz Page 1
         def Maoributton():
             if radio_var.get() == 1:
                 button1.grid(row = 9, column = 2,pady = 10, padx = 30)
@@ -402,7 +510,51 @@ class App(ctk.CTk):
             text="I like Maccas", value=2,variable=radio_var,
                                         command=Maoributton)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
-          
+
+    #Maori Wars Quiz Page 2
+        def MaoributtonA():
+            if radio_vara.get() == 1:
+                button1a.grid(row = 9, column = 2,pady = 10, padx = 30)
+            else:
+                button1a.grid_forget()
+        label = ctk.CTkLabel(self.page_maoriquiz2,
+            text="What were the Maori Wars?",font=("Harlow Solid Italic",50))
+        label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
+        button = ctk.CTkButton(master=self.page_maoriquiz2,
+                                text="Back",command=self.Maoriwquiz)
+        button.grid(row = 9, column = 0,pady = 10, padx = 30)
+        button1a = ctk.CTkButton(master=self.page_maoriquiz2,
+                                text="Next", command=self.credits)
+        button1a.grid_forget()
+        radio_vara = ctk.IntVar(master=self.page_maoriquiz2,
+                                value=0)
+        my_rad1 = ctk.CTkRadioButton(master=self.page_maoriquiz2,
+                            text="The Maori are sigma", value=1,
+                                variable=radio_vara,command=MaoributtonA)
+        my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
+        my_rad2 = ctk.CTkRadioButton(master=self.page_maoriquiz2,
+            text="I like Maccas", value=2,variable=radio_vara,
+                                        command=MaoributtonA)
+        my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
+
+
+    #Credits Page
+        label = ctk.CTkLabel(self.page_credits, text="Credits",
+            font=("Harlow Solid Italic",100))
+        label.grid(row = 0, column = 1, columnspan = 1,pady = 60, padx = 60)
+        label = ctk.CTkLabel(self.page_credits, text="Made by: Matthew Carter")
+        label.grid(row = 1, column = 1,pady = 60, padx = 60)
+        label = ctk.CTkLabel(self.page_credits, text="Version: 1.0")
+        label.grid(row = 2, column = 1,pady = 60, padx = 60)
+        label = ctk.CTkLabel(self.page_credits, 
+            text="If you would like to check out further information on the, topics in this app, please visit the following websites:")
+        button = ctk.CTkButton(master=self.page_credits,text="Back to menu",
+            height=60, width=120,font=("Helvetica",25), command=self.menu)
+        button.grid(row = 5, column = 0,pady = 60, padx = 60)
+        button = ctk.CTkButton(master=self.page_credits,text="Quit",
+            height=60, width=120,font=("Helvetica",25), command=self.quit)
+        button.grid(row = 5, column = 2,pady = 60, padx = 60)
+ 
 
         
     #Settings Page
@@ -442,6 +594,12 @@ class App(ctk.CTk):
         self.page_volcquiz1.place_forget()
         self.page_MLKJquiz1.place_forget()
         self.page_volcquiz2.place_forget()
+        self.page_blackhquiz2.place_forget()
+        self.page_japquiz2.place_forget()
+        self.page_trinityquiz2.place_forget()
+        self.page_MLKJquiz2.place_forget()
+        self.page_japquiz2.place_forget()
+        self.page_credits.place_forget()
         
     
     def show_welcome(self):
@@ -487,26 +645,50 @@ class App(ctk.CTk):
     def MLKJquiz(self):
         self.hide_all_pages()
         self.page_MLKJquiz1.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+    
+    def MLKJquiz2(self):
+        self.hide_all_pages()
+        self.page_MLKJquiz2.place(relx = 0.5, rely=0.5, anchor=tk.CENTER)
 
     def Blackhquiz(self):
         self.hide_all_pages()
         self.page_blackhquiz1.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
+    def Blackhquiz2(self):
+        self.hide_all_pages()
+        self.page_blackhquiz2.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
     def Japquiz(self):
         self.hide_all_pages()
         self.page_japquiz1.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def Japquiz2(self):
+        self.hide_all_pages()
+        self.page_japquiz2.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def Trinityquiz(self):
         self.hide_all_pages()
         self.page_trinityquiz1.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
+    def Trinityquiz2(self):
+        self.hide_all_pages()
+        self.page_trinityquiz2.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
     def Maoriwquiz(self):
         self.hide_all_pages()
         self.page_maoriquiz1.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+    
+    def Maoriwquiz2(self):
+        self.hide_all_pages()
+        self.page_maoriquiz2.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def settings(self):
         self.hide_all_pages()
         self.settings_page.place(relx=0.5, rely=0.5, anchor = tk.CENTER)
+
+    def credits(self):
+        self.hide_all_pages()
+        self.page_credits.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def dark_mode(self):
         ctk.set_appearance_mode("dark")
