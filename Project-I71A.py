@@ -4,28 +4,7 @@ import wikipedia
 from Text import *
 import threading as thread
 
-loaded_websites = {}
-
-
-class Thread(thread.Thread):
-    def __init__(self, website_name: str):
-        super().__init__()
-        self.website = website_name
-
-    def run(self):
-        loaded_websites[self.website] = wikipedia.summary(self.website)
-
 class App(ctk.CTk):
-
-    websites = [
-        'volcanoes',
-        'MLKJ',
-        'Japanese Culture',
-        'Black hole',
-        'Maori wars',
-        'Trinity Test',
-    ]
-
     def __init__(self):
         super().__init__()
 
@@ -45,8 +24,6 @@ class App(ctk.CTk):
         self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         self.title("Project-I71A")  # Title of the app
 
-        for website_data in enumerate(self.websites):
-            self.load_website_async(website_data)
 
         # Gets the pages ready but doesn't place them
         self.page_volc = ctk.CTkFrame(self)
@@ -102,7 +79,6 @@ class App(ctk.CTk):
             command=self.trinity).grid(row = 3, column = 2, pady = 40, padx =30)
         button = ctk.CTkButton(self.menu_page, text="Maori Wars",
             command=self.MaoriW).grid(row = 2, column = 3, pady = 40, padx =30)
-    
         button = ctk.CTkButton(self.menu_page, text="Back", height=60,width=120,
             command=self.show_welcome, font=("Helvetica",25)).grid(row = 9,
                                              column = 0, pady = 60, padx = 60)
@@ -175,10 +151,12 @@ class App(ctk.CTk):
             sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_trinity,
-                text="Back",height=60, width=120,command=self.menu)
+                text="Back",height=60, width=120,font=("Helvetica",25),
+                command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_trinity,
-                text="Next",height=60, width=120,command=self.trinityquiz)
+                text="Next",height=60, width=120,font=("Helvetica",25),
+                command=self.trinityquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
         #Maori Wars
@@ -187,10 +165,12 @@ class App(ctk.CTk):
             sentences = 10), 150), font=("Helvetica",25),height=500, width= 10)
         label.pack(pady=100,padx = 20)
         button = ctk.CTkButton(master=self.page_maoriw,
-                text="Back",height=60, width=120,command=self.menu)
+                text="Back",height=60, width=120,font=("Helvetica",25),
+                command=self.menu)
         button.place(relx=0.2, rely=0.9, anchor=ctk.S)
         button = ctk.CTkButton(master=self.page_maoriw,
-                text="Next",height=60, width=120,command=self.maoriwquiz)
+                text="Next",height=60, width=120,font=("Helvetica",25),
+                command=self.maoriwquiz)
         button.place(relx=0.8, rely=0.9, anchor=ctk.S)
 
         # Volc Quiz Page 1
@@ -235,7 +215,7 @@ class App(ctk.CTk):
             else:
                 button6a.grid_forget()
         label = ctk.CTkLabel(self.page_volcquiz2,
-                              text="What can large eruptions cause effect?",
+                              text="What can large eruptions cause?",
                               font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_volcquiz2,
@@ -301,7 +281,8 @@ class App(ctk.CTk):
             else:
                 button5a.grid_forget()
         label = ctk.CTkLabel(self.page_japquiz2,
-                        text="After how many years did Japan open its borders?",
+                        text="After how many years did Japan open itself to" 
+                        "Western influences?",
                         font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_japquiz2,
@@ -370,8 +351,8 @@ class App(ctk.CTk):
             else:
                 button4a.grid_forget()
         label = ctk.CTkLabel(self.page_mlkjquiz2,
-                                text="What was MLKJ's iconic saying?"
-                                ,font=("Harlow Solid Italic",50))
+                    text="What was Martin Luther King Junior's iconic saying?",
+                    font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_mlkjquiz2,
                                 text="Back",command=self.mlkjquiz)
@@ -390,7 +371,7 @@ class App(ctk.CTk):
               value=2,variable=radio_var3a, command=mlkjbuttona)
         my_rad2.grid(row=3,column=1,pady = 10, padx = 30)
         my_rad3 = ctk.CTkRadioButton(master=self.page_mlkjquiz2,
-            text=" will make America great again",
+            text="Make America great again",
             value=3,variable=radio_var3a, command=mlkjbuttona)
         my_rad3.grid(row=1,column=2,pady = 10, padx = 30)
         my_rad4 = ctk.CTkRadioButton(master=self.page_mlkjquiz2,
@@ -417,7 +398,7 @@ class App(ctk.CTk):
         radio_var2 = ctk.IntVar(master=self.page_blackhquiz1,
                                 value=0)
         my_rad1 = ctk.CTkRadioButton(master=self.page_blackhquiz1,
-            text="A portle to another universe", value=2, variable=radio_var2,
+            text="A portal to another universe", value=2, variable=radio_var2,
                                                         command=blackhbutton)
         my_rad1.grid(row=1,column=1,pady = 10, padx = 30)
         my_rad2 = ctk.CTkRadioButton(master=self.page_blackhquiz1,
@@ -677,9 +658,9 @@ class App(ctk.CTk):
         self.page_trinityquiz2.place_forget()
         self.page_mlkjquiz2.place_forget()
         self.page_japquiz2.place_forget()
+        self.page_maoriquiz2.place_forget()
         self.page_credits.place_forget()
         
-    
     def show_welcome(self):
         self.hide_all_pages()
         self.welcome.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -774,11 +755,6 @@ class App(ctk.CTk):
 
     def light_mode(self):
         ctk.set_appearance_mode("light")
-
-    # Thread class to load websites asynchronously
-    def load_website_async(self, website_data):
-        index, website = list(website_data)
-        Thread(website).start()
 
 if __name__ == "__main__":
     app = App()
