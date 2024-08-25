@@ -1,5 +1,7 @@
 import wikipedia
 
+# Split a string into multiple lines,
+# each with a maximum number of characters
 def split_string(string: str, max_characters: int):
     words = string.split()
     lines = []
