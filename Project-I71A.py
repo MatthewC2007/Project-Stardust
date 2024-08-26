@@ -215,7 +215,7 @@ class App(ctk.CTk):
             else:
                 button6a.grid_forget()
         label = ctk.CTkLabel(self.page_volcquiz2,
-                              text="What can large eruptions cause?",
+                              text="What can large eruptions effect?",
                               font=("Harlow Solid Italic",50))
         label.grid(row = 0, column = 1, columnspan = 2,pady = 60, padx =120)
         button = ctk.CTkButton(master=self.page_volcquiz2,
